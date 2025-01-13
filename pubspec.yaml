@@ -1,7 +1,9 @@
 name: flutter_midi_command_windows
-description: FlutterMidiCommand for windows.
+description: FlutterMidiCommand for windows. Forked version (TE)
 version: 0.1.1
 homepage: https://github.com/InvisibleWrench/FlutterMidiCommand
+publish_to: none
+
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
@@ -10,7 +12,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_midi_command_platform_interface: ^0.4.0
+  flutter_midi_command_platform_interface:
+    path: ../flutter_midi_command_platform_interface/
   ffi: ^2.1.0
   win32: ^5.5.0
   universal_ble: ^0.9.11

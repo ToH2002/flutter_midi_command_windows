@@ -46,12 +46,12 @@ class FlutterMidiCommandWindows extends MidiCommandPlatform {
     _rxStream = _rxStreamController.stream;
     _bluetoothStateStream = _bluetoothStateStreamController.stream;
 
-    final dm = DeviceMonitor();
-    dm.messages.listen((message) {
-      if (["deviceAppeared", "deviceDisappeared"].contains(message.event)) {
-        _setupStreamController.add(message.event);
-      }
-    });
+    // final dm = DeviceMonitor();
+    // dm.messages.listen((message) {
+    //   if (["deviceAppeared", "deviceDisappeared"].contains(message.event)) {
+    //     _setupStreamController.add(message.event);
+    //   }
+    // });
   }
 
   /// The windows implementation of [MidiCommandPlatform]
@@ -404,7 +404,6 @@ void _onMidiData(
       break;
     case MIM_LONGDATA:
       if ((midiHdr.dwFlags & MHDR_DONE) != 0) {
-
         final dataPointer = midiHdr.lpData.cast<Uint8>();
         final messageData = dataPointer.asTypedList(midiHdr.dwBytesRecorded);
 
@@ -424,7 +423,6 @@ void _onMidiData(
         //var data = pMidiHdr.ref.lpData
         //    .cast<Uint8>()
         //    .asTypedList(pMidiHdr.ref.dwBytesRecorded);
-       
       } else {
         // Decode and log each flag for debugging
         if ((midiHdr.dwFlags & MHDR_PREPARED) != 0) {
